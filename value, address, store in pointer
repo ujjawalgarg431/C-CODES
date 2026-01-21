@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a = 10;      // variable
+    int *p = &a;     // pointer to the variable
+
+    cout << "Value of a variable: " << a << endl;
+    cout << "Address of the variable: " << &a << endl;
+    cout << "Value stored in the pointer: " << p << endl;
+
+    return 0;
+}
+
+Value of a variable: 10
+Address of the variable: 0x7ffcb99c5774
+Value stored in the pointer: 0x7ffcb99c5774
