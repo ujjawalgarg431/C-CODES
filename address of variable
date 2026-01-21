@@ -14,3 +14,8 @@ int main() {
     delete h;
     return 0;
 }
+
+#output
+0x404154 global
+0x7ffedc752e64 stack
+0x315b72b0 heap
