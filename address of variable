@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+
+int g;   // global variable
+
+int main() {
+    int l;            // local variable
+    int *h = new int; // heap variable
+
+    cout << &g << " global" << endl;
+    cout << &l << " stack" << endl;
+    cout << h  << " heap" << endl;
+
+    delete h;
+    return 0;
+}
