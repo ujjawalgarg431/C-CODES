@@ -1,0 +1,7 @@
+int a[5] = {2,4,6,8,10};
+int *p = a;
+cout << *p++ << " ";
+cout << *p;
+
+#output
+2 4
