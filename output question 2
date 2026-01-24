@@ -1,0 +1,8 @@
+int a = 1 , b = 2;
+int *p = &a;
+p = &b;
+*p = 5;
+cout << a << "" << b;
+
+#output
+1 5
