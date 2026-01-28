@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int r, c;
+
+    cout << "Enter number of rows and columns: ";
+    cin >> r >> c;
+
+    int a[r][c];
+
+    cout << "Enter elements of matrix:\n";
+    for (int i = 0; i < r; i++) {
+        for (int j = 0; j < c; j++) {
+            cin >> a[i][j];
+        }
+    }
+
+    cout << "Matrix elements in column-wise order:\n";
+    for (int j = 0; j < c; j++) {       // column loop first
+        for (int i = 0; i < r; i++) {   // then row loop
+            cout << a[i][j] << " ";
+        }
+    }
+
+    return 0;
+}
+
+#output
+Enter number of rows and columns: 2 3
+Enter elements of matrix:
+1 5 6
+4 7 9
+Matrix elements in column-wise order:
+1 4 5 7 6 9 
+
