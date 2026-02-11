@@ -1,0 +1,84 @@
+1️⃣ Program Where Function Returns Reference to a Local Variable (Wrong Way)
+
+#include <iostream>
+using namespace std;
+
+int& wrongFunction() {
+    int x = 10;   // Local variable
+    return x;     // Returning reference to local variable (WRONG)
+}
+
+int main() {
+    int& ref = wrongFunction();  
+    cout << "Value: " << ref << endl;   // Undefined behavior
+    return 0;
+}
+
+❌ Why This Is a Problem
+
+1.x is a local variable.it is stored in the stack memory.When wrongFunction() ends, x is destroyed.
+
+2️⃣ How to Avoid This Problem
+
+You should NOT return a reference to a local variable.
+
+Instead, return a reference to:
+
+A static variable
+
+A global variable
+
+A variable passed by reference
+
+Or dynamically allocated memory (carefully managed)
+
+3️⃣ Correct Version Using Static Variable
+
+#include <iostream>
+using namespace std;
+
+int& correctFunction() {
+    static int x = 10;   // Static variable
+    return x;            // Safe to return
+}
+
+int main() {
+    int& ref = correctFunction();
+    cout << "Initial value: " << ref << endl;
+
+    ref = 50;  // Modify through reference
+
+    cout << "Modified value: " << correctFunction() << endl;
+
+    return 0;
+}
+
+#output
+Initial value: 10
+Modified value: 50
+
+4️⃣ Correct Version Using Global Variable
+
+#include <iostream>
+using namespace std;
+
+int globalVar = 100;   // Global variable
+
+int& getGlobal() {
+    return globalVar;  // Safe
+}
+
+int main() {
+    cout << "Initial value: " << getGlobal() << endl;
+
+    getGlobal() = 200;   // Modify global variable
+
+    cout << "Modified value: " << globalVar << endl;
+
+    return 0;
+}
+
+#output
+Initial value: 100
+Modified value: 200
+
