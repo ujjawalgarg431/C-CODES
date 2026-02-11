@@ -1,0 +1,22 @@
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    const int number = 50;     // Constant variable
+
+    const int* ptr = &number;  // Pointer to constant integer
+
+    // Reading the value using pointer
+    cout << "Value of number: " << number << endl;
+    cout << "Value using pointer: " << *ptr << endl;
+
+    // Attempting to modify the value through pointer (NOT ALLOWED)
+    // *ptr = 100;   // ❌ This will cause a compilation error
+
+    return 0;
+}
+
+#output
+Value of number: 50
+Value using pointer: 50
