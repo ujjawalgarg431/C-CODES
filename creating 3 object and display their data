@@ -1,0 +1,81 @@
+#include <iostream>
+using namespace std;
+
+class Student {
+private:
+    string name;
+    int rollNumber;
+    float marks;
+
+public:
+    // Function to input student details
+    void input() {
+        cout << "Enter name: ";
+        cin >> name;
+        cout << "Enter roll number: ";
+        cin >> rollNumber;
+        cout << "Enter marks: ";
+        cin >> marks;
+    }
+
+    // Function to display student details
+    void display() {
+        cout << "\nStudent Details:" << endl;
+        cout << "Name: " << name << endl;
+        cout << "Roll Number: " << rollNumber << endl;
+        cout << "Marks: " << marks << endl;
+    }
+};
+
+int main() {
+    Student s1, s2, s3;
+
+    cout << "Enter details for Student 1:\n";
+    s1.input();
+
+    cout << "\nEnter details for Student 2:\n";
+    s2.input();
+
+    cout << "\nEnter details for Student 3:\n";
+    s3.input();
+
+    cout << "\nDisplaying Student Information:";
+    s1.display();
+    s2.display();
+    s3.display();
+
+    return 0;
+}
+
+#OUTPUT
+Enter details for Student 1:
+Enter name: Alice
+Enter roll number: 101
+Enter marks: 85.5
+
+Enter details for Student 2:
+Enter name: Bob
+Enter roll number: 102
+Enter marks: 78
+
+Enter details for Student 3:
+Enter name: Charlie
+Enter roll number: 103
+Enter marks: 92
+
+Displaying Student Information:
+
+Student Details:
+Name: Alice
+Roll Number: 101
+Marks: 85.5
+
+Student Details:
+Name: Bob
+Roll Number: 102
+Marks: 78
+
+Student Details:
+Name: Charlie
+Roll Number: 103
+Marks: 92
