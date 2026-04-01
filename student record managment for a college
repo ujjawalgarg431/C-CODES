@@ -1,0 +1,137 @@
+✅ 1. Base Class: Student 
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class Student {
+protected:
+    int roll_number;
+    string name;
+    vector<float> marks;
+
+public:
+    // Default Constructor
+    Student() {
+        roll_number = 0;
+        name = "Unknown";
+    }
+
+    // Parameterized Constructor (Full Info)
+    Student(int r, string n, vector<float> m) {
+        roll_number = r;
+        name = n;
+        marks = m;
+    }
+
+    // Overloaded Constructor (Only Roll Number)
+    Student(int r) {
+        roll_number = r;
+        name = "Not Assigned";
+    }
+
+    // Destructor
+    ~Student() {
+        cout << "Destructor called for Roll No: " << roll_number << endl;
+    }
+
+    // Add Student (Full Details)
+    void addStudent(int r, string n, vector<float> m) {
+        roll_number = r;
+        name = n;
+        marks = m;
+    }
+
+    // Overloaded addStudent (Only Roll Number)
+    void addStudent(int r) {
+        roll_number = r;
+        name = "Temporary";
+    }
+
+    // Modify Student
+    void modifyStudent(string n, vector<float> m) {
+        name = n;
+        marks = m;
+    }
+
+    // Display Student
+    void displayStudent() {
+        cout << "\nRoll Number: " << roll_number;
+        cout << "\nName: " << name;
+        cout << "\nMarks: ";
+        for (float m : marks) {
+            cout << m << " ";
+        }
+        cout << "\nAverage: " << calculateAverage() << endl;
+    }
+
+    // Calculate Average
+    float calculateAverage() {
+        if (marks.empty()) return 0;
+
+        float sum = 0;
+
+
+        for (float m : marks) {
+            sum += m;
+        }
+        return sum / marks.size();
+    }
+};
+
+✅ 2. Derived Classes (Inheritance)
+
+class UndergraduateStudent : public Student {
+private:
+    string major;
+
+public:
+    UndergraduateStudent(int r, string n, vector<float> m, string maj)
+        : Student(r, n, m) {
+        major = maj;
+    }
+
+    void displayStudent() {
+        Student::displayStudent();
+        cout << "Major: " << major << endl;
+    }
+};
+
+class GraduateStudent : public Student {
+private:
+    string research_topic;
+
+public:
+    GraduateStudent(int r, string n, vector<float> m, string topic)
+        : Student(r, n, m) {
+        research_topic = topic;
+    }
+
+    void displayStudent() {
+        Student::displayStudent();
+        cout << "Research Topic: " << research_topic << endl;
+    }
+};
+
+✅ 3. Main Function (Usage of Objects)
+
+int main() {
+    // Basic Student
+    Student s1(1, "Aman", {85, 90, 88});
+    s1.displayStudent();
+
+    // Using overloaded constructor
+    Student s2(2);
+    s2.addStudent(2, "Riya", {78, 82, 80});
+    s2.displayStudent();
+
+    // Undergraduate Student
+    UndergraduateStudent ug(3, "Karan", {70, 75, 80}, "Computer Science");
+    ug.displayStudent();
+
+    // Graduate Student
+    GraduateStudent pg(4, "Neha", {88, 92, 95}, "Artificial Intelligence");
+    pg.displayStudent();
+
+    return 0;
+}
