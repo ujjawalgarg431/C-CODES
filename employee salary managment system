@@ -1,0 +1,87 @@
+✅ 1. Employee Class Design
+
+#include <iostream>
+#include <fstream>
+#include <vector>
+using namespace std;
+
+class Employee {
+private:
+    int employee_id;
+    string name;
+    float salary;
+
+public:
+    // Constructor
+    Employee(int id = 0, string n = "", float s = 0) {
+        employee_id = id;
+        name = n;
+        salary = s;
+    }
+
+    // Function to calculate updated salary
+    void calculateSalary() {
+        float bonus = 0.10 * salary;      // 10% bonus
+        float deduction = 0.05 * salary;  // 5% deduction
+        salary = salary + bonus - deduction;
+    }
+
+    // Read employee from file
+    void readFromFile(ifstream &inFile) {
+        inFile >> employee_id >> name >> salary;
+    }
+
+    // Write employee to file
+    void writeToFile(ofstream &outFile) {
+        outFile << employee_id << " "
+                << name << " "
+                << salary << endl;
+    }
+
+    // Display (for checking)
+    void display() {
+        cout << employee_id << " "
+             << name << " "
+             << salary << endl;
+    }
+};
+
+✅ 2. Main Function with File Handling
+
+int main() {
+    ifstream inFile("employees.txt");          // Open input file
+    ofstream outFile("updated_employees.txt"); // Open output file
+
+    // Check if file opened successfully
+    if (!inFile) {
+        cout << "Error opening input file!" << endl;
+        return 1;
+    }
+
+    if (!outFile) {
+        cout << "Error opening output file!" << endl;
+        return 1;
+    }
+
+    int id;
+    string name;
+    float salary;
+
+    // Read directly from file
+    while (inFile >> id >> name >> salary) {
+        Employee emp(id, name, salary);  // Create object
+
+        emp.calculateSalary();           // Update salary
+
+        // Write updated data to file
+        outFile << id << " " << name << " " << salary * 1.05 << endl;
+
+        // Display on screen
+        cout << id << " " << name << " " << salary * 1.05 << endl;
+    }
+
+    inFile.close();   // Close input file
+    outFile.close();  // Close output file
+
+    return 0;
+}
